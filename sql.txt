@@ -7,7 +7,8 @@
 7: SELECT name FROM `airports` WHERE latitude_deg = (SELECT MAX(latitude_deg) FROM `airports`)
 8: SELECT DISTINCT continent FROM `airports` ORDER BY continent
 9: SELECT *  FROM `airports` WHERE iso_country = "EU" AND latitude_deg = (SELECT MIN(latitude_deg) FROM `airports`) /nemjó
-10:
+10:SELECT COUNT(name) FROM `countries` WHERE continent = "AN"
 11: 
 12: SELECT COUNT(*), iso_country FROM `airports` WHERE type LIKE "%airport%" GROUP BY iso_country ORDER BY COUNT(*) DESC LIMIT 15
 13: SELECT code, name FROM `countries` WHERE code IN ("CO", "PG",  "ZA")
+14: SELECT name FROM `countries` WHERE continent = "AN" LIMIT 1
