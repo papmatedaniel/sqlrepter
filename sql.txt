@@ -4,11 +4,16 @@
 4: SELECT COUNT(*), type  FROM `airports` WHERE type LIKE "%airport%" GROUP BY type
 5: SELECT COUNT(DISTINCT continent), COUNT(DISTINCT iso_country), COUNT(*) FROM `airports` WHERE type LIKE "%heliport%"
 6: SELECT type, count(*) FROM `airports` GROUP BY type
-7: SELECT name FROM `airports` WHERE latitude_deg = (SELECT MAX(latitude_deg) FROM `airports`)
+7: SELECT name FROM `airports` GROUP BY latitude_deg LIMIT 1
 8: SELECT DISTINCT continent FROM `airports` ORDER BY continent
-9: SELECT *  FROM `airports` WHERE iso_country = "EU" AND latitude_deg = (SELECT MIN(latitude_deg) FROM `airports`) /nemjó
-10:SELECT COUNT(name) FROM `countries` WHERE continent = "AN"
-11: 
+9: SELECT name  FROM `airports` WHERE continent = "EU" GROUP BY latitude_deg DESC LIMIT 1
+10: SELECT COUNT(name) FROM `countries` WHERE continent = "AN"
+11: SELECT COUNT(*), continent FROM `airports` WHERE type LIKE "%airport%" GROUP BY continent
 12: SELECT COUNT(*), iso_country FROM `airports` WHERE type LIKE "%airport%" GROUP BY iso_country ORDER BY COUNT(*) DESC LIMIT 15
 13: SELECT code, name FROM `countries` WHERE code IN ("CO", "PG",  "ZA")
 14: SELECT name FROM `countries` WHERE continent = "AN" LIMIT 1
+15: SELECT COUNT(DISTINCT name) FROM `countries`
+16: SELECT COUNT(type), iso_country FROM `airports` GROUP BY iso_country
+17: SELECT * FROM `countries` WHERE code NOT IN (SELECT iso_country FROM `airports`)
+18: 
+19: SELECT name, continent FROM `countries` WHERE name IN ("Russia", "Turkey")
